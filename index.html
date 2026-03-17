@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Chatbot</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #chatbox {
+      width: 300px;
+      margin: auto;
+      text-align: left;
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+    }
+    input {
+      width: 220px;
+      padding: 10px;
+    }
+    button {
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>My Chatbot 🤖</h2>
+
+<div id="chatbox"></div>
+
+<br>
+
+<input id="userInput" placeholder="Type a message...">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+function sendMessage() {
+  let input = document.getElementById("userInput").value.toLowerCase();
+  let chatbox = document.getElementById("chatbox");
+
+  chatbox.innerHTML += "<p><b>You:</b> " + input + "</p>";
+
+  let reply = "";
+
+  if (input.includes("hello") || input.includes("hi")) {
+    reply = "Hey there! 👋";
+  }
+  else if (input.includes("how are you")) {
+    reply = "I'm just code, but I'm doing great 😄";
+  }
+  else if (input.includes("your name")) {
+    reply = "I'm your custom chatbot 😎";
+  }
+  else if (input.includes("bye")) {
+    reply = "Goodbye! Come back soon 👋";
+  }
+  else {
+    reply = "Hmm... I’m still learning 🤔";
+  }
+
+  chatbox.innerHTML += "<p><b>Bot:</b> " + reply + "</p>";
+
+  document.getElementById("userInput").value = "";
+  chatbox.scrollTop = chatbox.scrollHeight;
+}
+</script>
+
+</body>
+</html>
